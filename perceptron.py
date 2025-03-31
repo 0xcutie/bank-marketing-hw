@@ -198,3 +198,11 @@ print("Model Evaluation")
 print(summary_df)
 
 summary_df.to_csv('model_evaluation_summary.csv')
+
+with open('best_params.txt', 'w') as f:
+    f.write(f"整體最佳 alpha: {overall_best_alpha}\n")
+    f.write(f"整體最佳 penalty: {overall_best_penalty}\n")
+    f.write(f"對應的平均測試準確度: {overall_best_test_accuracy:.4f}\n")
+
+np.savetxt('train_confusion_matrix_sum.csv', train_confusion_matrices_sum.astype(int), delimiter=',', fmt='%d')
+np.savetxt('test_confusion_matrix_sum.csv', test_confusion_matrices_sum.astype(int), delimiter=',', fmt='%d')
